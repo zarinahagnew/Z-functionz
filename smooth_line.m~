@@ -1,0 +1,45 @@
+%function []=smooth_line(data) %, window_size)
+function[gaps]=smooth_line(data)%, gap_thresh)
+
+%function[gaps]=countgaps(testz, gap_thresh)
+% eg smooth_line(data, 3)
+% countgaps([variable name], [gap threshold])
+% data=group_cond1_HCs_to_use_mean(300:600)
+ window_size=3
+
+%chop data into windows 
+% temp is one mean data point for each window
+for iwindow=1:length(data)-window_size 
+smoothed_data(iwindow)=nanmean(data(iwindow:iwindow+window_size))
+end
+
+% calculate mean trial
+meantrial=nanmean(data)
+moo=ones(1,length(data))
+meantrial=meantrial*moo
+
+% calculate distance
+for iframe=1:length(data)-window_size
+    distance(iframe)=data(iframe)-smoothed_data(iframe)
+end
+
+%plot that all to check
+subplot(3,1,1)
+plot(data)
+hold on
+plot(meantrial, 'm')
+title('raw data and mean')
+
+subplot(3,1,2)
+plot(temp)
+title('smoothed line (moving average)')
+
+subplot(3,1,3)
+plot(distance)
+title('distance from mean over 10 frame moving window')
+
+
+
+t
+
+
