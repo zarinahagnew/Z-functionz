@@ -1,7 +1,7 @@
 function [filtered_data]=lowpass(data, cutoff, N)
 % data = the data
 % cutoff = the cutoff frequency (between 0 and 1
-% form: lowpass(data, 0.2)
+% form: lowpassdata=lowpass(data, 3, 0.2)
 % --------------------------------------------------
 % create butterworth filter
 % [B,A] = butter(N,Wn)
@@ -16,17 +16,8 @@ function [filtered_data]=lowpass(data, cutoff, N)
 % now apply that filter to your data
 filtered_data=filter(B,A, data);
 
-figure 
-subplot(211)
-plot(data, 'k','LineWidth',1.3);
-%axis([0 300 -5 30])
-
-subplot(212)
-plot(filtered_data, 'm','LineWidth',1.3);
-%axis([0 300 -5 30])
-
-if sum(isnan(test))>1
-    error('ERRRRRORRRRR');
+if sum(isnan(filtered_data))>1
+    error('check for nans in your data');
 end
 
 

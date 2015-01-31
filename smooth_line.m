@@ -1,6 +1,8 @@
-function [distance]=smooth_line(data, window_size)
-% eg smooth_line(data, 20)
+function smoothed_data=smooth_line(data, window_size)
+% eg a=smooth_line(trialdata, 10)
 % need to be here: cd /Users/zagnew/GitHub/Z-functionz
+% takes an array and averages over a window of size 'window_size' for each frame
+
 
 %chop data into windows 
 % temp is one mean data point for each window
@@ -12,31 +14,6 @@ end
 meantrial=nanmean(data);
 moo=ones(1,length(data));
 meantrial=meantrial*moo;
-
-% calculate distance
-for iframe=1:length(data)-window_size
-    distance(iframe)=data(iframe)-smoothed_data(iframe);
-end
-distance=abs(distance); % reverse polarities
-
-%plot that all to check
-subplot(3,1,1)
-plot(data)
-hold on
-plot(meantrial, 'm')
-title('raw data and mean')
-axis([0 300 -10 30])
-
-subplot(3,1,2)
-plot(smoothed_data)
-title('smoothed line (moving average)')
-axis([0 300 -10 30])
-
-subplot(3,1,3)
-plot(distance)
-title('distance from mean over 10 frame moving window')
-
-
 
 
 
