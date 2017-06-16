@@ -46,7 +46,7 @@ axis([0 600 -10 100])
 % 
 % subplot(3,2,4)
 % plot(lowpassdata)
-title('low pass filtered data')f
+title('low pass filtered data')
 % axis([0 600 -10 400])
 % 
 % subplot(3,2,6)
